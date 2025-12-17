@@ -1,0 +1,56 @@
+---
+// src/components/ui/Nav Bar/Navbar.astro
+import './navbar.css';
+
+// 1. DATA: Define labels and button text here
+const menuItems = [
+  { label: "Solutions", hasIcon: true },
+  { label: "Products",  hasIcon: true },
+  { label: "Tools",     hasIcon: true },
+  { label: "Insights",  hasIcon: false }
+];
+
+const primaryCtaLabel = "Request A Demo";
+const secondaryCtaLabel = "Sign In";
+---
+
+<div class="nav-bar">
+  <div class="nav-inner">
+    <div class="nav-main">
+      <a href="/" class="nav-logo">
+        <img src="/mtm-website/MTM-CLR.svg" alt="MTM Logo" class="nav-logo-img" />
+      </a>
+
+      <div class="nav-menu">
+        {menuItems.map((item) => (
+          <button class="btn btn-menu" type="button">
+            <span class="btn-text">{item.label}</span>
+            {item.hasIcon && (
+              <svg class="btn-icon" viewBox="0 0 24 24">
+                <path d="M6 9l6 6 6-6" />
+              </svg>
+            )}
+          </button>
+        ))}
+      </div>
+    </div>
+
+    <div class="nav-actions">
+      <div class="lang-toggle-group">
+        <button class="lang-toggle is-active" type="button" data-lang="FR" aria-pressed="true">
+          <span class="lang-icon" aria-hidden="true"></span>
+          <span class="lang-label">FR</span>
+        </button>
+        <button class="lang-toggle" type="button" data-lang="EN" aria-pressed="false">
+          <span class="lang-icon" aria-hidden="true"></span>
+          <span class="lang-label">EN</span>
+        </button>
+      </div>
+
+      <button class="btn btn-secondary" type="button">{secondaryCtaLabel}</button>
+      <button class="btn btn-primary" type="button">{primaryCtaLabel}</button>
+    </div>
+  </div>
+</div>
+
+<script src="./lang-toggle.js"></script>
