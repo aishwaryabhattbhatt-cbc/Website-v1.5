@@ -150,6 +150,10 @@
     text-transform: capitalize;
     font-weight: 600;
     font-size: 16px;  
+    text-decoration: none; /* Removes the underline */
+    color: inherit;        /* Uses the color you already defined for buttons */
+    display: flex;         /* Ensures the text and icon stay aligned */
+    align-items: center;
   }
   
   .btn-menu .btn-icon {
@@ -165,6 +169,7 @@
     stroke-width: 1.6px;
     stroke-linecap: round;
     stroke-linejoin: round;
+    text-decoration: none;
   }
   
   .btn-menu:hover,
@@ -198,6 +203,9 @@
     cursor: pointer;
     height: 18px;
     transition: color 150ms ease, opacity 150ms ease;
+    text-decoration: none; /* Removes the underline */
+    
+
 }
 
 .lang-toggle .lang-icon {

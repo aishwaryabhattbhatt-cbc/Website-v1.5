@@ -1,85 +1,160 @@
 /* ===========================================
    TYPOGRAPHY SYSTEM
+   Fully Tokenized & Accessibility Optimized
    =========================================== */
 
-/* Headings use Inter by default */
-h1,
-h2,
-h3,
-.hero-title,
-.feature-title {
-  font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
-               sans-serif;
-  font-weight: 600;  /* semi-bold */
-  letter-spacing: -0.02em;
+/* --- Headings / Display --- */
+
+@import "./tokens.css";
+
+h0, .h0, .display-title {
+  font-family: var(--font-family-body);
+  font-size: var(--font-size-display);
+  font-weight: var(--weight-regular);
+  line-height: var(--lh-display);
+  font-style: normal;
+  color: var(--color-blue-dark-1);
 }
 
-/* H1 / hero titles */
-h1,
-.hero-title {
-  font-size: clamp(2.5rem, 2.1rem + 1vw, 3.5rem); /* ~40–56px responsive */
-  line-height: 1.1;
+h1, .h1, .hero-title {
+  font-family: var(--font-family-title);
+  font-size: var(--font-size-h1);
+  font-weight: var(--weight-bold);
+  line-height: var(--lh-heading);
+  font-style: normal;
 }
 
-/* H2 / section titles */
-
-h2,
-.feature-title {
-  font-family: 'Inter', sans-serif;
-  font-weight: 500;          /* semibold */
-  font-size: 40px;           /* fixed size you asked for */
-  line-height: 1.3;         /* same as before */
-  margin: 0;                 /* optional but recommended */
+h2, .h2, .feature-title {
+  font-family: var(--font-family-title);
+  font-size: var(--font-size-h2);
+  font-weight: var(--weight-bold);
+  line-height: var(--lh-heading);
+  font-style: normal;
 }
 
-
-
-/* Text before the highlight in hero */
-.hero-title-base {
-  font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
-               sans-serif;
-  font-weight: 500;
+h3, .h3 {
+  font-family: var(--font-family-title);
+  font-size: var(--font-size-h3);
+  font-weight: var(--weight-medium);
+  line-height: var(--lh-heading);
+  font-style: normal;
 }
 
-/* Hero subtitle */
-.hero-subtitle {
-  font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
-               sans-serif;
-  font-size: 1.125rem;   /* 18px */
-  font-weight: 400;
-  line-height: 1.5;
-  color: #475467;
-  
+h4, .h4 {
+  font-family: var(--font-family-title);
+  font-size: var(--font-size-h4);
+  font-weight: var(--weight-regular);
+  line-height: var(--lh-heading);
+  font-style: normal;
 }
 
-/* Body text helper (optional) */
-.body-text {
-  font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
-               sans-serif;
-  font-size: 1rem;
-  line-height: 1.5;
-  color: #475467;
+h5, .h5, .subtitle-text {
+  font-family: var(--font-family-body);
+  font-size: var(--font-size-subtitle);
+  font-weight: var(--weight-medium);
+  line-height: var(--lh-tight);
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
 }
 
+/* --- Highlight Styles (Serif) --- */
 
-/* Display font */
-.display-title {
-  font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
-               sans-serif;
-  font-weight: 400;       /* Regular */
-  font-size: 148px;
-  line-height: 1.05;      /* tweak as needed */
-  color: #093BAE
+.highlight-1 {
+  font-family: var(--font-family-highlight);
+  font-size: var(--font-size-h1); /* 48px from tokens */
+  font-weight: var(--weight-regular);
+  line-height: var(--lh-heading);
+  font-style: italic;
 }
 
-/* Subtitle */
-.subtitle-text {
-  font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
-               sans-serif;      
-  font-weight: 500;             
-  font-size: 1rem;              
-  letter-spacing: 0.02em;       
-  text-transform: uppercase;        
-  color: #000000;               
+.highlight-2 {
+  font-family: var(--font-family-highlight);
+  font-size: var(--font-size-h2);
+  font-weight: var(--weight-regular);
+  line-height: var(--lh-heading);
+  font-style: italic;
 }
 
+/* --- Body Text --- */
+
+.body-l {
+  font-family: var(--font-family-body);
+  font-size: var(--font-size-body-l);
+  font-weight: var(--weight-regular);
+  line-height: var(--lh-body);
+}
+
+.body-l-bold {
+  font-family: var(--font-family-body);
+  font-size: var(--font-size-body-l);
+  font-weight: var(--weight-semibold);
+  line-height: var(--lh-body);
+}
+
+.body-m, p {
+  font-family: var(--font-family-body);
+  font-size: var(--font-size-body-m);
+  font-weight: var(--weight-regular);
+  line-height: var(--lh-body);
+}
+
+.body-m-bold {
+  font-family: var(--font-family-body);
+  font-size: var(--font-size-body-m);
+  font-weight: var(--weight-semibold);
+  line-height: var(--lh-body);
+}
+
+.body-s {
+  font-family: var(--font-family-body);
+  font-size: var(--font-size-body-s);
+  font-weight: var(--weight-regular);
+  line-height: var(--lh-body);
+}
+
+.body-s-bold {
+  font-family: var(--font-family-body);
+  font-size: var(--font-size-body-s);
+  font-weight: var(--weight-semibold);
+  line-height: var(--lh-body);
+}
+
+/* --- UI / Interactive Elements --- */
+
+.button-l {
+  font-family: var(--font-family-body);
+  font-size: var(--font-size-button-l);
+  font-weight: var(--weight-medium);
+  line-height: var(--lh-tight);
+  text-transform: uppercase;
+}
+
+.button-m {
+  font-family: var(--font-family-body);
+  font-size: var(--font-size-button-m);
+  font-weight: var(--weight-medium);
+  line-height: var(--lh-tight);
+  text-transform: uppercase;
+}
+
+.button-s {
+  font-family: var(--font-family-body);
+  font-size: var(--font-size-button-s);
+  font-weight: var(--weight-medium);
+  line-height: var(--lh-tight);
+  text-transform: uppercase;
+}
+
+.input-label {
+  font-family: var(--font-family-body);
+  font-size: var(--font-size-input-label);
+  font-weight: var(--weight-regular);
+  line-height: var(--lh-body); 
+}
+
+.input-text {
+  font-family: var(--font-family-body);
+  font-size: var(--font-size-input-text);
+  font-weight: var(--weight-regular);
+  line-height: var(--lh-body);
+}

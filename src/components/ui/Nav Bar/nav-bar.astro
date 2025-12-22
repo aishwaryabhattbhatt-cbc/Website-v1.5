@@ -2,55 +2,77 @@
 // src/components/ui/Nav Bar/Navbar.astro
 import './navbar.css';
 
-// 1. DATA: Define labels and button text here
+// 1. Import your new i18n tools
+// Check your folder depth: you might need '../../i18n/ui' or '../../../i18n/ui'
+import { getLangFromUrl, useTranslations } from '../../../i18n/ui.js'; 
+
+// 2. Detect the language and setup the translator
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+// 3. Define the base path for GitHub Pages (/mtm-website)
+const base = import.meta.env.BASE_URL;
+
+// 4. Update your menu to use the translator
 const menuItems = [
-  { label: "Solutions", hasIcon: true },
-  { label: "Products",  hasIcon: true },
-  { label: "Tools",     hasIcon: true },
-  { label: "Insights",  hasIcon: false }
+  { label: t('nav.solutions') || "Solutions", hasIcon: true, href: `${base}/${lang}/solutions` },
+  { label: t('nav.products') || "Products",   hasIcon: true, href: `${base}/${lang}/products` },
+  { label: t('nav.tools') || "Tools",         hasIcon: true, href: `${base}/${lang}/tools` },
+  { label: t('nav.insights') || "Insights",   hasIcon: false, href: `${base}/${lang}/insights` }
 ];
 
-const primaryCtaLabel = "Request A Demo";
-const secondaryCtaLabel = "Sign In";
+// 5. Translate your CTA buttons
+const primaryCtaLabel = t('nav.demo') || "Request A Demo";
+const secondaryCtaLabel = t('nav.signin') || "Sign In";
 ---
 
 <div class="nav-bar">
   <div class="nav-inner">
     <div class="nav-main">
-      <a href="/" class="nav-logo">
+      <a href={`${base}/${lang}/`} class="nav-logo">
         <img src="/mtm-website/MTM-CLR.svg" alt="MTM Logo" class="nav-logo-img" />
       </a>
 
       <div class="nav-menu">
         {menuItems.map((item) => (
-          <button class="btn btn-menu" type="button">
+          /* We changed 'button' to 'a' so it actually works as a link to different languages */
+          <a href={item.href} class="btn btn-menu">
             <span class="btn-text">{item.label}</span>
+            
+            {/* This is your original icon code, preserved here */}
             {item.hasIcon && (
               <svg class="btn-icon" viewBox="0 0 24 24">
                 <path d="M6 9l6 6 6-6" />
               </svg>
             )}
-          </button>
+          </a>
         ))}
       </div>
     </div>
 
     <div class="nav-actions">
-      <div class="lang-toggle-group">
-        <button class="lang-toggle is-active" type="button" data-lang="FR" aria-pressed="true">
-          <span class="lang-icon" aria-hidden="true"></span>
-          <span class="lang-label">FR</span>
-        </button>
-        <button class="lang-toggle" type="button" data-lang="EN" aria-pressed="false">
-          <span class="lang-icon" aria-hidden="true"></span>
-          <span class="lang-label">EN</span>
-        </button>
-      </div>
+    <div class="lang-toggle-group">
+      <a href={`${base}/fr/`} 
+         class={`lang-toggle ${lang === 'fr' ? 'is-active' : ''}`} 
+         aria-pressed={lang === 'fr'}>
+        <span class="lang-icon"></span>
+        <span class="lang-label">FR</span>
+      </a>
+    
+      <a href={`${base}/`} 
+         class={`lang-toggle ${lang === 'en' ? 'is-active' : ''}`} 
+         aria-pressed={lang === 'en'}>
+        <span class="lang-icon"></span>
+        <span class="lang-label">EN</span>
+      </a>
+    </div>
 
-      <button class="btn btn-secondary" type="button">{secondaryCtaLabel}</button>
-      <button class="btn btn-primary" type="button">{primaryCtaLabel}</button>
+      <button class="btn btn-secondary">{t('nav.signin') || 'Sign In'}</button>
+      <button class="btn btn-primary">{t('nav.demo') || 'Request A Demo'}</button>
     </div>
   </div>
 </div>
+</div>
+
 
 <script src="./lang-toggle.js"></script>
